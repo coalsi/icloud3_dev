@@ -1,6 +1,6 @@
 # iCloud3  Device Tracker Custom Component  
 
-- Version:  1.1.0, Beta 8
+- Version:  1.1.0, Beta 9
 - Released:  August 29, 2019
 
 ------
@@ -420,8 +420,9 @@ Select the method to be used to track your phone or other device. iCloud3 suppor
     devicename
     devicename > badge_picture_name
     devicename > badge_picture_name, sensor_prefix_name
-     
-    
+
+
+​    
     IOS App Version 2:
     ------------------
     devicename
