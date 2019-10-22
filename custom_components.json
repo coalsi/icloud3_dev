@@ -1,14 +1,16 @@
 {
     "icloud3": {
-        "version": "1.1.",
+        "version": "2.0",
         "local_location":  "/custom_components/icloud3_dev/device_tracker.py",
         "remote_location": "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/device_tracker.py",
         "visit_repo":      "https://github.com/gcobb321/icloud3_dev",
-        "changelog":       "https://github.com/gcobb321/icloud3/blob/master/ChangeLog.md",
+        "changelog":       "https://github.com/gcobb321/icloud3_dev/blob/master/ChangeLog.md",
         "resources": [
             "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/__init__.py",
             "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/manifest.json",
-            "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/services.yaml"
+            "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/services.yaml",
+            "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/device_tracker.py",
+            "https://raw.githubusercontent.com/gcobb321/icloud3_dev/master/custom_components/icloud3_dev/pyicloud_ic3.py"
         ]
     }
 }
