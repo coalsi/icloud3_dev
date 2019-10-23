@@ -22,7 +22,7 @@ Thanks to all
 #pylint: disable=unused-argument, unused-variable
 #pylint: disable=too-many-instance-attributes, too-many-lines
 
-VERSION = '2.0rc-c'     #Custom Component Updater
+VERSION = '2.0rc'     #Custom Component Updater
 
 import logging
 import os
