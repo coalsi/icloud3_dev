@@ -28,7 +28,7 @@
 - old_location_threshold - If the location is older then this value, it will be discarded and the device will be repolled until a current location is returned. 
 - log_level - Display debug information on the Home Assistant Log File
 
-##### Renamed Setvice Calls
+##### Renamed iCloud Service Calls
 The following device_tracker service calls were renamed for clarity and to avoid confusion with the interhan HA icloud device_tracker platform. Basically, 'icloud_XXX' was changed to 'icloud3_XXX'.
 
 | New Name | Old Name |
