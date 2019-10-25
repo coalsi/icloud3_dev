@@ -6,16 +6,16 @@
 
 ##### Deleted Configuration Parameters
 
-  - include_devices/include_device
-  - include_device_types/include_device_type
-  - exclude_devices/exclude_device
-  - exclude_device_types/exclude_device_type
-  - filter_devices
-  - sensor_name_prefix
-  - sensor_badge_picture
-  - base_zone (iCloud3 beta version)
-  - account (replaced by *group*)
-  - distance (replaced by *zone_distance*)
+- include_devices/include_device
+- include_device_types/include_device_type
+- exclude_devices/exclude_device
+- exclude_device_types/exclude_device_type
+- filter_devices
+- sensor_name_prefix
+- sensor_badge_picture
+- base_zone (iCloud3 beta version)
+- account (replaced by *group*)
+- distance (replaced by *zone_distance*)
 
 ##### New Configuration Parameters
 
@@ -27,6 +27,16 @@
 - zone_distance - The distance from the device to the zone (Home or another zone being used as the basis for distance and interval calculations). This was done to avoid conflicts with the HA IOS App which also has a *distance* attribute/sensor.  
 - old_location_threshold - If the location is older then this value, it will be discarded and the device will be repolled until a current location is returned. 
 - log_level - Display debug information on the Home Assistant Log File
+
+##### Renamed Setvice Calls
+The following device_tracker service calls were renamed for clarity and to avoid confusion with the interhan HA icloud device_tracker platform. Basically, 'icloud_XXX' was changed to 'icloud3_XXX'.
+
+| New Name | Old Name |
+|----------|----------|
+| icloud3_update | icloud_update |
+| icloud3_set_interval | icloud_set_interval |
+| icloud3_restart | icloud_restart |
+| icloud3_lost_phone | icloud_lost_phone |
 
 ### Other Changes
 

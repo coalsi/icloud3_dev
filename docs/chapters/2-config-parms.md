@@ -126,15 +126,15 @@ Select the method to be used to track your phone or other device. iCloud3 suppor
 ### Zone, Interval and Sensor Configuration Items
 ###### inzone_interval 
 The interval between location updates when the device is in a zone. This can be in seconds, minutes or hours, e.g., 30 secs, 1 hr, 45 min, or 30 (minutes are assumed if no time qualifier is specified).  
-*Default:* 2 hrs
+*Default:* '2 hrs'
 
 ###### stationary_inzone_interval 
 The interval between location updates when the device is in a Dynamic Stationary Zone. See Special Zones chapter for more information about stationary zones. This can be minutes or hours, e.g., 1 hr, 45 min, or 30 (minutes are assumed if no time qualifier is specified).  
-*Default:* 30 min
+*Default:* '30 min'
 
 ###### stationary_still_time 
 The number minutes of with little movement minutes before the device will be put into its Dynamic Stationary Zone.   
-*Valid values:* Number. *Default:* 8
+*Valid values:* Number. *Default:* '8 min'
 
 ###### unit_of_measurement 
 The unit of measure for distances in miles or kilometers.   
@@ -142,11 +142,11 @@ The unit of measure for distances in miles or kilometers.
 
 ###### gps_accuracy_threshold 
 iCloud location updates come with some gps_accuracy varying from 10 to 5000 meters. This setting defines the accuracy threshold in meters for a location updates. This allows more precise location monitoring and fewer false positive zone changes. If the gps_accuracy is above this threshold, a location update will be retried again to see if the accuracy has improved.  
-*Default*: 125m
+*Default*: 125 (in meters)
 
 ###### old_location_threshold
 When the device is located, it’s location coordinates and the time it was located are updated. If the time is older than this value (in minutes), the transaction is discarded and the device is repolled until a current location is available. It is repolled on a 15-second interval, followed by a 1-minute, 5-minute and 15-minute interval.  
-*Valid values:* Number of minutes *Default*: 2
+*Valid values:* Number of minutes *Default*: '2 min'
 
 !> When the accuracy is poor, a message is displayed in the `info` attribute field.
 
@@ -165,7 +165,7 @@ iCloud3 uses two methods of determining the distance between home and your curre
 
 ###### waze_min_distance, waze_max_distance 
 These values are also used to determine if the polling internal should be based on the Waze distance. If the calculated straight-line distance is between these values, the Waze distance will be requested from the Waze mapping service. Otherwise, the calculated distance is used to determine the polling interval.  
-*Default:* min=1, max=1000 
+*Default:* min=1, max=1000   *Note:* This value uses the `unit_of_measurement`  distance.
 
 !> The Waze distance becomes less accurate when you are close to home. The calculation method is better when the distances less than 1 mile or 1 kilometer. 
 
@@ -190,7 +190,7 @@ When using Waze and the distance from your current location to home is more than
 device_tracker:
   - platform: icloud3
     username: !secret gary_fmf_username
-    password: !secret gary_fmf__password
+    password: !secret gary_fmf_password
     track_devices:
       - gary_iphone > gary-icloud-acct@email.com, gary.png
       - lillian_iphone > lillian-icloud-acct@email.com, lillian.png
@@ -210,7 +210,7 @@ device_tracker:
     distance_method: calc
     waze_region: US
     waze_min_distance: 1
-    waze_max_distance: 9999
+    waze_max_distance: 1000
     waze_realtime: false
     
     create_sensors: intvl,ttim,zdis,wdis,cdis,lupdt,nupdt,zon,zon1,zon2

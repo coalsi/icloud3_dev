@@ -4,13 +4,13 @@ Four services are available for the iCloud3 device tracker component that are us
 
 | Service | Description |
 |---------|-------------|
-| icloud_update | Send commands to iCloud3 that change the way it is running (pause, resume, Waze commands, etc.) |
-| icloud_set_interval | Override the dynamic interval calculated by iCloud3. |
-| icloud_lost_phone | Play the Lost Phone sound. |
-| icloud_reset | Reset the iCloud3 custom component. |
+| icloud3_update | Send commands to iCloud3 that change the way it is running (pause, resume, Waze commands, etc.) |
+| icloud3_set_interval | Override the dynamic interval calculated by iCloud3. |
+| icloud3_lost_phone | Play the Lost Phone sound. |
+| icloud3_reset | Reset the iCloud3 custom component. |
 
 
-### icloud_update Service
+### icloud3_update Service
 
 This service allows you to change the way iCloud3 operates. The following parameters are used:
 
@@ -26,7 +26,7 @@ The following describe the commands that are available.
 |-----------------|-------------|
 | pause |  Stop updating/locating a device (or all devices). Note: You may want to pause location updates for a device if you are a long way from home or out of the country and it doesn't make sense to continue locating your device. |
 | resume |  Start updating/locating a device (or all devices) after it has been paused. |
-| resume |  Reset the update interval if it was overridden the 'icloud_set_interval' service. |
+| resume |  Reset the update interval if it was overridden the 'icloud3_set_interval' service. |
 | pause-resume |  Toggle pause and resume commands |
 | zone zonename | service call) and immediately update the device interval and location data. Note: Using the device_tracker.see service call instead will update the device state but the new interval and location data will be delayed until the next 15-second polling iteration (rather than immediately). |
 | waze on |  Turn on Waze. Use the 'waze' method to determine the update interval. |
@@ -42,56 +42,56 @@ The following describe the commands that are available.
 ```yaml
 # Commands to control how iCloud3 operates
 
-icloud_command_pause_resume_polling:
+icloud3_command_pause_resume_polling:
   alias: 'Toggle Pause/Resume Polling'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: pause-resume
 
-icloud_command_resume_polling:
+icloud3_command_resume_polling:
   alias: 'Resume Polling'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: resume
         
-icloud_command_pause_polling:
+icloud3_command_pause_polling:
   alias: 'Pause Polling'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: pause
 
-icloud_command_pause_polling_gary:
+icloud3_command_pause_polling_gary:
   alias: 'Pause (Gary)'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         device_name: gary_iphone
         command: pause
 
-icloud_command_toggle_waze:
+icloud3_command_toggle_waze:
   alias: 'Toggle Waze On/Off'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: waze toggle
 
-icloud_command_garyiphone_zone_home:
+icloud3_command_garyiphone_zone_home:
   alias: 'Gary - Zone Home'
   sequence:
 
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         device_name: gary_iphone
         command: zone home
       
 
-icloud_command_garyiphone_zone_not_home:
+icloud3_command_garyiphone_zone_not_home:
   alias: 'Gary - Zone not_home'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         device_name: gary_iphone
         command: zone not_home
@@ -100,10 +100,10 @@ icloud_command_garyiphone_zone_not_home:
 ```yaml
 #Commands to Restart iCloud3
 
-icloud_command_restart:
+icloud3_command_restart:
   alias: 'iCloud3 Restart'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: restart
 ```
@@ -111,24 +111,24 @@ icloud_command_restart:
 ```yaml
 #Commands to Generate Detailed Information on iCloud3's Operations
 
-icloud_command_info_interval_formula:
+icloud3_command_info_interval_formula:
   alias: 'Display Interval Formula'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: info interval
 
-icloud_command_info_logging_toggle:
+icloud3_command_info_logging_toggle:
   alias: 'Write Details to Log File (Toggle)'
   sequence:
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         command: info logging
 ```
 
-### icloud_set_interval Service
+### icloud3_set_interval Service
 
-This service allows you to override the interval between location updates to a fixed time. It is reset when a zone is entered or when the icloud_update service call is processed with the 'resume' command. The following parameters are used:
+This service allows you to override the interval between location updates to a fixed time. It is reset when a zone is entered or when the icloud3_update service call is processed with the 'resume' command. The following parameters are used:
 
 | Parameter | Description |
 |-----------|-------------|
@@ -138,31 +138,31 @@ This service allows you to override the interval between location updates to a f
 ```yaml
 #Commands to Change Intervals
 
-icloud_set_interval_15_sec_gary:
+icloud3_set_interval_15_sec_gary:
   alias: 'Set Gary to 15 sec'
   sequence:
-    - service: device_tracker.icloud_set_interval
+    - service: device_tracker.icloud3_set_interval
       data:
         device_name: gary_iphone
         interval: '15 sec'
  
-icloud_set_interval_1_min_gary:
+icloud3_set_interval_1_min_gary:
   alias: 'Set Gary to 1 min'
   sequence:
-    - service: device_tracker.icloud_set_interval
+    - service: device_tracker.icloud3_set_interval
       data:
         device_name: gary_iphone
         interval: 1
 
-icloud_set_interval_5_hrs_all:
+icloud3_set_interval_5_hrs_all:
   alias: 'Set interval to 5 hrs (all devices)'
   sequence:
-    - service: device_tracker.icloud_set_interval
+    - service: device_tracker.icloud3_set_interval
       data:
         interval: '5 hrs'
 ```
 
-### icloud_lost_iphone  Service
+### icloud3_lost_iphone  Service
 
 This service will play the Lost iPhone sound on a specific device when you use the family-sharing tracking method. Due to an Apple limitation, this is not available for the Find-my-Friends tracking method.
 
@@ -170,7 +170,15 @@ This service will play the Lost iPhone sound on a specific device when you use t
 |-----------|-------------|
 | device_name | Name of the device *(Required)* |
 
-### icloud_restart Service
+### icloud3_restart Service
 
-This service will restart iCloud3 and refresh all of the devices being handled by iCloud3. It does the same action as the `icloud_command` with the `refresh` option described above. You will have to restart Home Assist if you have made changes to the configuration parameters (new device type, new device name, etc.) 
+This service will restart iCloud3 and refresh all of the devices being handled by iCloud3. It does the same action as the `icloud3_command` with the `restart` option described above. You will have to restart Home Assist if you have made changes to the configuration parameters (new device type, new device name, etc.) 
 
+```yaml
+#Commands to Restart iCloud3
+
+icloud3_command_restart:
+  alias: 'iCloud3 Restart'
+  sequence:
+    - service: device_tracker.icloud3_restart
+```

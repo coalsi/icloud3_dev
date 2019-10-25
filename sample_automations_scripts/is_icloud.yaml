@@ -4,7 +4,7 @@
 #
 #########################################################
 
-icloud_commands:
+icloud3_commands:
   name: iCloud Commands
   options:
     - Pause
@@ -14,7 +14,7 @@ icloud_commands:
     - Resume garyiphone
   icon: mdi:apple-keyboard-command
   
-icloud_set_interval:
+icloud3_set_interval:
   name: iCloud Set Interval
   options:
     - 30 sec
@@ -32,7 +32,7 @@ icloud_set_interval:
   initial: 30 min
   icon: mdi:clock
 
-icloud_debug_commands:
+icloud3_debug_commands:
   name: iCloud Debug Command
   options:
     - info logger

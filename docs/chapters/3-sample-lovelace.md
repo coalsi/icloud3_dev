@@ -21,14 +21,11 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.gary_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
               - entity: sensor.gary_iphone_zone_distance
-                name: HomeDist
+                name: Home
                 icon: mdi:map-marker-distance 
               - entity: sensor.gary_iphone_next_update
                 name: NextUpdt
@@ -60,11 +57,6 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
                 - entity: sensor.gary_iphone_info
                   name: Info
                   icon: mdi:information-outline 
-
-          - type: entities
-            entities:
-              - script.icloud_update_location_gary
-              - script.homeassistant_restart
               
       - type: vertical-stack
         cards:
@@ -77,9 +69,6 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.lillian_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.lillian_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
@@ -134,14 +123,11 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.gary_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
               - entity: sensor.gary_iphone_zone_distance
-                name: HomeDist
+                name: Home
                 icon: mdi:map-marker-distance 
               - entity: sensor.gary_iphone_next_update
                 name: NextUpdt
@@ -174,10 +160,6 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
                   name: Info
                   icon: mdi:information-outline 
 
-          - type: entities
-            entities:
-              - script.icloud_update_location_gary
-              - script.homeassistant_restart
 #-------------------------------------------------------------------------              
       - type: vertical-stack
         cards:
@@ -190,9 +172,6 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.lillian_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.lillian_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
@@ -246,14 +225,11 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.gary_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
               - entity: sensor.gary_iphone_zone_distance
-                name: HomeDist
+                name: Home
                 icon: mdi:map-marker-distance 
               - entity: sensor.gary_iphone_next_update
                 name: NextUpdt
@@ -286,11 +262,6 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
                   name: Info
                   icon: mdi:information-outline 
 
-          - type: entities
-            entities:
-              - script.icloud_update_location_gary
-              - script.homeassistant_restart
-
 #-------------------------------------------------------------------------              
       - type: vertical-stack
         cards:
@@ -303,14 +274,11 @@ The following examples show how Lovelace Cards can show iCloud3 information in v
               - entity: sensor.whse_gary_iphone_interval
                 name: Interval
                 icon: mdi:clock-start
-                tap_action: 
-                  action: call-service
-                  service: script.icloud_command_display_interval_formula
               - entity: sensor.whse_gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
               - entity: sensor.whse_gary_iphone_zone_distance
-                name: WhseDist
+                name: Whse
                 icon: mdi:map-marker-distance 
               - entity: sensor.whse_gary_iphone_next_update
                 name: NextUpdt

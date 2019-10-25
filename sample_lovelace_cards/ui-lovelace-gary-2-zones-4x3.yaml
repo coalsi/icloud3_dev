@@ -55,7 +55,7 @@
                 icon: mdi:counter
                 tap_action: 
                   action: call-service
-                  service: script.icloud_command_event_log_gary
+                  service: script.icloud3_command_event_log_gary
 
           - type: entities
             entities:
@@ -116,7 +116,7 @@
                 icon: mdi:counter
                 tap_action: 
                   action: call-service
-                  service: script.icloud_command_event_log_gary
+                  service: script.icloud3_command_event_log_gary
  
           - type: entities
             entities:
@@ -126,6 +126,6 @@
 
           - type: entities
             entities:
-              - script.icloud_update_location_gary
+              - script.icloud3_update_location_gary
               - script.homeassistant_restart
               

@@ -49,7 +49,7 @@ views:
                 name: Interval
                 icon: mdi:clock-start
                 tap_action: call-service
-                service: script.icloud_command_display_interval_formula
+                service: script.icloud3_command_display_interval_formula
               - entity: sensor.gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline

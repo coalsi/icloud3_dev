@@ -62,7 +62,7 @@ views:
 
           - type: entities
             entities:
-              - script.icloud_update_location_gary
+              - script.icloud3_update_location_gary
               - script.homeassistant_restart
               
 #----------------------------------------------------------------------

@@ -98,4 +98,4 @@ When iCloud3 starts and if the `tracking_method` is 'fmf' of 'famshr', the iClou
 - iCloud3 will not poll the device on a regular basis since it can't access the iCloud Find-My-Friends or Family Sharing Location Service. The decreasing interval as you approach Home or another zone will be not be done. Automations and scripts based on a short distance from home will not trigger. Automations and scripts triggered on a zone change should continue to work.
 - The device is not located when HA starts. It may take a few minutes to process the next IOS app notification to locate the device.
 
-!> iCloud3 can be restarted using the service call  `icloud_update` with the `restart` command or the service call `icloud_reset`. If you use the Find-my-Friends or Family Sharing tracking method, the iCloud Location Service will be rechecked and used if it is now available. 
+!> iCloud3 can be restarted using the service call  `icloud3_update` with the `restart` command or the service call `icloud3_restart`. If you use the Find-my-Friends or Family Sharing tracking method, the iCloud Location Service will be rechecked and used if it is now available. 

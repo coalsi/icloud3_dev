@@ -85,7 +85,7 @@ views:
 
           - type: entities
             entities:
-              - script.icloud_update_location_gary
+              - script.icloud3_update_location_gary
               - script.homeassistant_restart
 
 #-------------------------------------------------------------            
@@ -149,46 +149,46 @@ views:
         title: iCloud3 Device Tracker Commands
         show_header_toggle: false
         entities:
-          - script.icloud_command_resume_polling
-          - script.icloud_command_pause_polling
-          - script.icloud_command_restart
-          - script.icloud_restart_service
+          - script.icloud3_command_resume_polling
+          - script.icloud3_command_pause_polling
+          - script.icloud3_command_restart
+          - script.icloud3_restart_service
           - type: divider
-          - script.icloud_set_interval_30_sec
-          - script.icloud_set_interval_1_min
-          - script.icloud_set_interval_5_min
-          - script.icloud_set_interval_15_min
-          - script.icloud_set_interval_30_min
-          - script.icloud_set_interval_45_min
-          - script.icloud_set_interval_1_hrs
-          - script.icloud_set_interval_90_mins
-          - script.icloud_set_interval_5_hrs
+          - script.icloud3_set_interval_30_sec
+          - script.icloud3_set_interval_1_min
+          - script.icloud3_set_interval_5_min
+          - script.icloud3_set_interval_15_min
+          - script.icloud3_set_interval_30_min
+          - script.icloud3_set_interval_45_min
+          - script.icloud3_set_interval_1_hrs
+          - script.icloud3_set_interval_90_mins
+          - script.icloud3_set_interval_5_hrs
           - type: divider
-          - script.icloud_command_toggle_icloud_disabled
-          - script.icloud_command_toggle_waze
-          - script.icloud_command_reset_waze_range
-          - script.icloud_lost_iphone_invalid
-          - script.icloud_update_location
+          - script.icloud3_command_toggle_icloud3_disabled
+          - script.icloud3_command_toggle_waze
+          - script.icloud3_command_reset_waze_range
+          - script.icloud3_lost_iphone_invalid
+          - script.icloud3_update_location
           
       - type: entities
         title: iCloud3 Commands - Gary
         show_header_toggle: false
         entities:   
-          - script.icloud_command_resume_polling_gary
-          - script.icloud_command_pause_polling_gary
-          - script.icloud_set_interval_2_min_gary
-          - script.icloud_set_interval_10_min_gary
-          - script.icloud_set_interval_1_min_lillian
-          - script.icloud_set_interval_10_min_lillian
-          - script.icloud_update_location_gary
-          - script.icloud_lost_iphone_gary
+          - script.icloud3_command_resume_polling_gary
+          - script.icloud3_command_pause_polling_gary
+          - script.icloud3_set_interval_2_min_gary
+          - script.icloud3_set_interval_10_min_gary
+          - script.icloud3_set_interval_1_min_lillian
+          - script.icloud3_set_interval_10_min_lillian
+          - script.icloud3_update_location_gary
+          - script.icloud3_lost_iphone_gary
           
       - type: entities
         title: iCloud3 Service Calls
         show_header_toggle: false
         entities:    
-          - script.icloud_lost_iphone_lillian
-          - script.icloud_lost_iwatch_lillian
-          - script.icloud_gary_iphone_see_away
-          - script.icloud_update_location_lillian
+          - script.icloud3_lost_iphone_lillian
+          - script.icloud3_lost_iwatch_lillian
+          - script.icloud3_gary_iphone_see_away
+          - script.icloud3_update_location_lillian
          

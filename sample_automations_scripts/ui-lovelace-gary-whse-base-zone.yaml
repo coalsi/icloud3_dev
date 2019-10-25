@@ -16,7 +16,7 @@
                 icon: mdi:clock-start
                 tap_action: 
                   action: call-service
-                  service: script.icloud_command_display_interval_formula
+                  service: script.icloud3_command_display_interval_formula
               - entity: sensor.gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
@@ -58,7 +58,7 @@
                 icon: mdi:counter
                 tap_action: 
                   action: call-service
-                  service: script.icloud_command_event_log_gary
+                  service: script.icloud3_command_event_log_gary
 
           - type: entities
             entities:
@@ -80,7 +80,7 @@
                 icon: mdi:clock-start
                 tap_action: 
                   action: call-service
-                  service: script.icloud_command_display_interval_formula
+                  service: script.icloud3_command_display_interval_formula
               - entity: sensor.whse_gary_iphone_travel_time
                 name: TravTime
                 icon: mdi:clock-outline
@@ -129,6 +129,6 @@
 
           - type: entities
             entities:
-              - script.icloud_update_location_gary
+              - script.icloud3_update_location_gary
               - script.homeassistant_restart
               

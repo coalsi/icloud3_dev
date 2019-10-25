@@ -43,7 +43,7 @@ gary_arrives_home:
       value_template: '{{states.device_tracker.gary_iphone.state != "home"}}'
     
     #Issue 'zone home' command
-    - service: device_tracker.icloud_update
+    - service: device_tracker.icloud3_update
       data:
         device_name:  gary_iphone
         command:     'zone home'
