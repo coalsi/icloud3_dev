@@ -43,7 +43,7 @@ The Apple support web site has several articles that will help you set up yout i
 You set up the device’s primary user as a friend on the `Find My` app (iOS 13) or the `Find-my-Friends` app (iOS 12) and iCloud3 will locate them just like the app does. Since your Apple iCloud account probably has 2fa turned on, you need to create a new iCloud account without 2fa, then add the person using the device as a friend to that account, share their location and verify their location is being shared before setting up iCloud3.
 
 1. Add a new iCloud account with a different email address. Do not select the 2fa option, otherwise you will be in the same constant notification situation you are trying to avoid. You will use this email address in the `username` configuration parameter.
- 
+
 !> This is easier to set up if you do it on a device you will not be locating. 
 
 !> IOS 13 turns on 2fa automatically and it can not be turned off. The non-2fa account should be added on a computer instead of an iPhone or iPad.
@@ -85,7 +85,16 @@ You can not specify the device's devicename within the HA IOS App. When the HA I
 
 When HA starts, iCloud3 reads the HA Entity Registry file (./storage/core.entity_registry) and searches for a mobile device entry beginning with the devicename on the tracker_devices configuration parameter (i.e., `gary_iphone`). If it finds the entry, the suffix is read and iCloud3 monitors that device_tracker entity (`device_tracker.gary_iphone_2`) for zone changes.
 
-!> IMPORTANT NOTE: If the IOS App v2 was installed before iCloud3, the app may have assigned the device_tracker entity name without the suffix. If you then install iCloud3 and use the same name on the track_devices parameter, an iCloud3 error message is displayed in the HA log file and on the iCloud3 Event Log Card identifying the conflicting names. 
+!> *IMPORTANT NOTE*: If the IOS App v2 was installed before iCloud3, the app may have been assigned the device_tracker entity name without the suffix. If you then install iCloud3 and use the same name on the track_devices parameter, a devicename conflict occurs. HA does not allow the same name to be used by a device in the Entity Registry and a custom component. An error message is displayed in the HA log file and on the iCloud3 Event Log Card. 
+
+To correct this conflict, you should change the Entity ID of the IOS App v2 device_tracker entity to another name on the `HA Sidebar>Configuration>Integrations` screen. Do the following:
+
+1.  Select the *Mobile_App* entry for the device.
+2. Scroll to the *device_tracker.<devicename>* statement.
+3. Select it.
+4. Click *Settings* icon in the upper-right corner.
+5. Change *Entity ID* to another value. Suggestion *device_tracker.<devicename>_iosappv2*,
+6. Restart HA.
 
 !> If no mobile_app entry with a devicename starting with the one on the tracked_devices parameter is found, iCloud3 will monitor that device using the IOS App version 1.
 
