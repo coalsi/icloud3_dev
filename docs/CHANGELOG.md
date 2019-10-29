@@ -76,7 +76,7 @@ To correct this conflict, you should change the Entity ID of the IOS App v2 devi
 5. Change *Entity ID* to another value. Suggestion *device_tracker.devicename_iosappv2*.
 6. Restart HA.
 
-This is duscussed in more detail in the Setting up your iCloud Account chapter of the documentation.
+This is discussed in more detail in the Setting up your iCloud Account chapter of the documentation.
 
 !>Both versions can be used at the same time for different devices on the same account. Some can use version 1 and others can use version 2 based on the IOS App version installed on the device.
 
