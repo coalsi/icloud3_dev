@@ -710,7 +710,7 @@ class iCloud3EventLogCard extends HTMLElement {
         var updateTimeAttr      = hass.states['sensor.icloud3_event_log'].attributes['update_time']
         eltInfoUpdateTime.innerText = updateTimeAttr
 
-        //this._hass.callService("device_tracker", "icloud_update", {
+        //this._hass.callService("device_tracker", "icloud3_update", {
         //    device_name: 'reset', command: 'event_log'})
     }
 
@@ -735,7 +735,7 @@ class iCloud3EventLogCard extends HTMLElement {
     }
 //---------------------------------------------------------------------------
     _buttonPress(buttonPressId) {
-        /* Handle the button press events. Get the devicename, do an 'icloud_update'
+        /* Handle the button press events. Get the devicename, do an 'icloud3_update'
         event_log devicename' service call to have the event_log attribute populated.
         */
         const root        = this.shadowRoot;
@@ -779,7 +779,7 @@ class iCloud3EventLogCard extends HTMLElement {
             thisButtonPressed.style.backgroundColor = "#0088F0"
         }
 
-        this._hass.callService("device_tracker", "icloud_update", {
+        this._hass.callService("device_tracker", "icloud3_update", {
             device_name: devicenames[buttonPressX],
             command: 'event_log'})
     }
