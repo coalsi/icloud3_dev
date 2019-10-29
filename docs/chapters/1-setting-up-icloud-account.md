@@ -93,7 +93,7 @@ To correct this conflict, you should change the Entity ID of the IOS App v2 devi
 2. Scroll to the *device_tracker.devicename* statement.
 3. Select it.
 4. Click *Settings* icon in the upper-right corner.
-5. Change *Entity ID* to another value. Suggestion *device_tracker.devicename_iosappv2*,
+5. Change *Entity ID* to another value. Suggestion *device_tracker.devicename_iosappv2*.
 6. Restart HA.
 
 !> If no mobile_app entry with a devicename starting with the one on the tracked_devices parameter is found, iCloud3 will monitor that device using the IOS App version 1.
