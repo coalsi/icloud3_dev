@@ -148,12 +148,8 @@ iCloud location updates come with some gps_accuracy varying from 10 to 5000 mete
 When the device is located, it’s location coordinates and the time it was located are updated. If the time is older than this value (in minutes), the transaction is discarded and the device is repolled until a current location is available. It is repolled on a 15-second interval, followed by a 1-minute, 5-minute and 15-minute interval.  
 *Valid values:* Number of minutes *Default*: 2
 
-!> When the accuracy is poor, a message is displayed in the `info` attribute field.
-
 ##### ignore_gps_accuracy_inzone
-
-If the device is in a zone, gps accuracy will be ignored.
-
+If the device is in a zone, gps accuracy will be ignored.  
 *Valid values:* True, False  *Default:* True
 
 ###### create_sensors 
