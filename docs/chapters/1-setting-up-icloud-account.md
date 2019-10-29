@@ -81,9 +81,13 @@ The name in `Settings App>General>About>Name` field on the iPhone and iPad and i
 The devicename is entered into the Device ID field in the `HA IOS App>Settings` window, i.e. `gary_iphone` would be typed in the Device Id field.
 
 ###### IOS App version 2
-You can not specify the device's devicename within the HA IOS App. When the HA IOS App is added to the device, a device_tracker entity is added to HA and is assigned a name (`gary_iphone`) followed by a sequence number to make the name unique, i.e., `gary_iphone_2` if `gary_iphone` already exists. 
+You can not specify the device's devicename within the HA IOS App. When the HA IOS App is added to the device, a device_tracker entity is added to HA and is assigned a name (`gary_iphone`) followed by a suffix (sequence number) to make the name unique, i.e., `gary_iphone_2` if `gary_iphone` already exists. 
 
-When HA starts, iCloud3 reads the HA Entity Registry file (./storage/core.entity_registry) and searches for a mobile device entry beginning with the devicename (`gary_iphone`). It picks up the sequence number previously assigned and monitors that device_tracker entity (`device_tracker.gary_iphone_2`) for zone changes.
+When HA starts, iCloud3 reads the HA Entity Registry file (./storage/core.entity_registry) and searches for a mobile device entry beginning with the devicename on the tracker_devices configuration parameter (i.e., `gary_iphone`). If it finds the entry, the suffix is read and iCloud3 monitors that device_tracker entity (`device_tracker.gary_iphone_2`) for zone changes.
+
+!> IMPORTANT NOTE: If the IOS App v2 was installed before iCloud3, the app may have assigned the device_tracker entity name without the suffix. If you then install iCloud3 and use the same name on the track_devices parameter, an iCloud3 error message is displayed in the HA log file and on the iCloud3 Event Log Card identifying the conflicting names. 
+
+!> If no mobile_app entry with a devicename starting with the one on the tracked_devices parameter is found, iCloud3 will monitor that device using the IOS App version 1.
 
 !> iCloud3 also monitors the sensor.devicename_last_update_trigger entity associated with the device for Background Fetch, Significant Location Update and Manual location triggers.
 
