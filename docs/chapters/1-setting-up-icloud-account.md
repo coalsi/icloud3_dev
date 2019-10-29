@@ -77,15 +77,15 @@ When your account needs to be authorized, or reauthorized, the request will be d
 ### Associating the iPhone Device Name with Home Assistant using the Home Assistant IOS App
 The name in `Settings App>General>About>Name` field on the iPhone and iPad and in the Apple Watch App for the iWatch is stored in the iCloud account and used by Home Assistant to identify the device. HA converts any special characters found to an underscore, e.g., `Gary-iPhone` becomes `gary_iphone` in HA (entity registry and `known_devices.yaml`) which is then used in automations, sensors, scripts, etc. The way this ties to the iCloud3 tracked_device depends on the version of the HA IOS App you are using on the device.
 
-###### IOS App version 1
+#### IOS App version 1
 The devicename is entered into the Device ID field in the `HA IOS App>Settings` window, i.e. `gary_iphone` would be typed in the Device Id field.
 
-###### IOS App version 2
+#### IOS App version 2
 You can not specify the device's devicename within the HA IOS App. When the HA IOS App is added to the device, a device_tracker entity is added to HA and is assigned a name (`gary_iphone`) followed by a suffix (sequence number) to make the name unique, i.e., `gary_iphone_2` if `gary_iphone` already exists. 
 
 When HA starts, iCloud3 reads the HA Entity Registry file (./storage/core.entity_registry) and searches for a mobile device entry beginning with the devicename on the tracker_devices configuration parameter (i.e., `gary_iphone`). If it finds the entry, the suffix is read and iCloud3 monitors that device_tracker entity (`device_tracker.gary_iphone_2`) for zone changes.
 
-!> *IMPORTANT NOTE*: If the IOS App v2 was installed before iCloud3, the app may have been assigned the device_tracker entity name without the suffix. If you then install iCloud3 and use the same name on the track_devices parameter, a devicename conflict occurs. HA does not allow the same name to be used by a device in the Entity Registry and a custom component. An error message is displayed in the HA log file and on the iCloud3 Event Log Card. 
+***IMPORTANT NOTE***: If the IOS App v2 was installed before iCloud3, the app may have been assigned the device_tracker entity name without the suffix. If you then install iCloud3 and use the same name on the track_devices parameter, a devicename conflict occurs. HA does not allow the same name to be used by a device in the Entity Registry and a custom component. An error message is displayed in the HA log file and on the iCloud3 Event Log Card. 
 
 To correct this conflict, you should change the Entity ID of the IOS App v2 device_tracker entity to another name on the `HA Sidebar>Configuration>Integrations` screen. Do the following:
 
