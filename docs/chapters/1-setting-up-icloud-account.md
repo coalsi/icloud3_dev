@@ -52,7 +52,7 @@ You set up the device’s primary user as a friend on the `Find My` app (iOS 13)
 
 3. Add them to the `Find My` app (iOS 13) or the `Find-my-Friends` (iOS 12) app. You will need to send friend requests and then confirm them on each device so you will need to have access to their devices. 
 
-4. Verify that the `Find My` app, the `Find-my-Friends` app ouricloud.com can locate them before continuing to set up iCloud3. They should be displayed on the map in the app when logged into the new non-2fa account and the 'Sharing With ...'  message should be displayed in the app when logged into the actual account.
+4. Verify that the `Find My` or the `Find-my-Friends` app and your iCloud account at icloud.com can locate your 'friends' before continuing to set up iCloud3. They should be displayed on the map in the app when logged into the new non-2fa account and the 'Sharing With ...'  message should be displayed in the app when logged into the actual account.
 
 !> If the devices can not be seen in the app, they will not be located by iCloud3.
 
