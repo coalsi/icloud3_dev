@@ -1236,7 +1236,7 @@ class Icloud(DeviceScanner):
 #   of the iCloud devices to see if any of the ones being tracked need
 #   to be updated. If so, we might as well update the information for
 #   all of the devices being tracked since PyiCloud gets data for
-#   every device in the account.
+#   every device in the account
 #
 #########################################################
 
@@ -1262,23 +1262,17 @@ class Icloud(DeviceScanner):
         this_5sec_loop_second = int(dt_util.now().strftime('%S'))
 
         #Reset counts on new day, check for daylight saving time new offset
-        if count_reset_timer == '00:00:05':
+        if count_reset_timer.endswith(':00:00'):
+            for devicename in self.tracked_devices:
+                event_msg = ("Metrics: {}").format(
+                        self._format_usage_counts(devicename))
+                self._save_event(devicename, event_msg)
+
+        if count_reset_timer == '00:00:00':
             for devicename in self.tracked_devices:
                 devicename_zone = self._format_devicename_zone(devicename, HOME)
 
-                event_msg = ("Daily Update Counts: iCloud-{}, IOS App-{}, Ignored-{}").format(
-                    self.count_update_iosapp.get.get(devicename),
-                    self.count_update_icloud.get(devicename),
-                    self.count_update_ignore.get(devicename))
-                self._save_event_halog_info(devicename, event_msg)
-
-                event_msg = ("Daily Trigger Counts: StateChg-{}, TriggerChg-{}, IOS App Locate Requests-{}").format(
-                    self.count_state_changed.get(devicename),
-                    self.count_trigger_changed.get(devicename),
-                    self.iosapp_location_update_cnt.get(devicename))
-                self._save_event_halog_info(devicename, event_msg)
-
-                event_msg = ("^^^ {}, Daily Reset, {}-{} ^^^").format(
+                event_msg = ("^^^ {}, iCloud3 Reset, {}-{} ^^^").format(
                     dt_util.now().strftime('%a, %b %d'),
                     self.username_base,
                     self.group)
@@ -1299,7 +1293,7 @@ class Icloud(DeviceScanner):
                         self.iosapp_v2_last_trigger_entity.get(devicename))
                     self._save_event_halog_info(devicename, event_msg)
 
-                self.event_cnt[devicename]         = 0
+                self.event_cnt[devicename]           = 0
                 self.count_update_iosapp[devicename] = 0
                 self.count_update_icloud[devicename] = 0
                 self.count_update_ignore[devicename] = 0
@@ -4655,9 +4649,6 @@ class Icloud(DeviceScanner):
                         self.ignore_gps_accuracy_inzone_flag):
                     info_msg = '{}-Ignored'.format(info_msg)
 
-            poll_cnt = self.count_update_icloud.get(devicename) + \
-                        self.count_update_iosapp.get(devicename) + \
-                        self.count_update_ignore.get(devicename)
 
             isold_cnt = self.location_isold_cnt.get(devicename)
 
@@ -4674,12 +4665,13 @@ class Icloud(DeviceScanner):
                     info_msg = '{} ●Using Waze data from {}'.format(info_msg,
                                 self.friendly_name.get(copied_from))
 
-            if poll_cnt > 0 and (poll_cnt % 5) == 0:
-                 info_msg = '{} ●Update.Cnt: iCloud-{}, IOSApp-{}, Ignored-{}'.format(
+            poll_cnt = self.count_update_icloud.get(devicename) + \
+                        self.count_update_iosapp.get(devicename) + \
+                        self.count_update_ignore.get(devicename)
+            if (poll_cnt % 5) == 0:
+                 info_msg =('{} ●Metrics: {}').format(
                     info_msg,
-                    self.count_update_icloud.get(devicename),
-                    self.count_update_iosapp.get(devicename),
-                    self.count_update_ignore.get(devicename))
+                    self._format_usage_counts(devicename))
 
         except Exception as err:
             _LOGGER.exception(err)
@@ -4736,6 +4728,23 @@ class Icloud(DeviceScanner):
             self.count_update_icloud.get(devicename),
             self.count_update_iosapp.get(devicename),
             self.count_update_ignore.get(devicename))
+
+#--------------------------------------------------------------------
+    def _format_usage_counts(self, devicename):
+
+        usage_msg =( "iCloud.Locates-{}, IOS.App.Updates-{}, Discarded-{}, "
+            "State.Changes-{}, Trigger.Changes-{}").format(
+            self.count_update_icloud.get(devicename),
+            self.count_update_iosapp.get(devicename),
+            self.count_update_ignore.get(devicename),
+            self.count_state_changed.get(devicename),
+            self.count_trigger_changed.get(devicename))
+        if self.iosapp_location_update_cnt.get(devicename) > 0:
+            usage_msg = "{}, IOS.APP.Locates-{}".format(
+                usage_msg,
+                self.iosapp_location_update_cnt.get(devicename))
+
+        return usage_msg
 
 #########################################################
 #
