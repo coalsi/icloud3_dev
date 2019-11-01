@@ -58,7 +58,7 @@ You set up the device’s primary user as a friend on the `Find My` app (iOS 13)
 
 ![setup_fmf_icloud3](../images/setup_fmf_icloud3.jpg)
 
-The above diagram shows how the Find-my-Friends Contact List links the 
+*This diagram shows how the Find-my-Friends Contact List information is stored on your iCloud Account. iCloud3 accesses this information to locate your devices. If any of the information is missing or not set up correctly, iCloud3 can not locate your device.*<br>
 
 #### Family Sharing (FamShr) {docsify-ignore}
 
