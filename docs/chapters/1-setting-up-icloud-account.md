@@ -58,7 +58,10 @@ You set up the device’s primary user as a friend on the `Find My` app (iOS 13)
 
 ![setup_fmf_icloud3](../images/setup_fmf_icloud3.jpg)
 
+The above diagram shows how the Find-my-Friends Contact List links the 
+
 #### Family Sharing (FamShr) {docsify-ignore}
+
 If you do not have 2fa turned on on your 'real' iCloud account, you can use the Family Sharing tracking method to locate your device(s). iCloud3 looks for the devices to be tracked in the list of people that are in the Family Sharing list on your iCloud account. With Family Sharing, you use your 'real' iCloud account email address for the `username`  configuration parameter.
 
 The `tracking_method` and `tracked_devices` configuration parameters are used to indicate how tracking should be done and the devices to be tracked.
