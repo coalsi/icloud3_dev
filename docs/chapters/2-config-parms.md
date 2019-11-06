@@ -13,7 +13,7 @@ The name of the group of devices being tracked for this iCloud3 device_tracker p
 
 ###### entity_registry_file_name
 The Home Assistant Entity Registry stores information about the devices and entities. It is searched when iCloud3 starts to determine if the HA IOS App version 2 is being used for tracking a device. This can be used if a different file should be searched for device informaion. Normally, you should not have to specify this parameter.  
-*Valid value:*  existing entity registry in json format  *Default:* '/.storage/core.entity_registry'
+*Valid value:*  valid file name for the Home Assistant entity registry file  *Default:* '/.storage/core.entity_registry'
 
 ### Devices to be tracked
 ###### tracking_method 
