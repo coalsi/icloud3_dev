@@ -1,4 +1,4 @@
-## Version 2.0 - 10/25/2019
+## Version 2.0 - 11/13/2019
 
 ### Breaking Changes
 
