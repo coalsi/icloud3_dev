@@ -26,10 +26,11 @@ VERSION = '2.0rc.7'     #Custom Component Updater
 '''
 rc.7
 - If you were having poor gps accuracy and the last distance traveled was < 1km, the calculated distance and travel time from the zone on this poll was discarded and the last good distance & time data was used. If you were entering a zone (i.e., home), the distance and time were still still being overridden when they should not be. The result was the current zone show as Home with a Distance of 3.08mi when it should be 0mi. Automations that had a distance check on a zone change would then not be triggered. This has been corrected.
-- Made some formatting changes to eror and information messages.
-- If the Stationary zone was being exited and you were having poor gps or the location data was old, the iCloud3 would somtimes change the devices location to the center of the zone. In this case, it would change it to the North Pole, causing an error condition to occur and iCloud3 would be restarted. This has been fixed.
+- Made some formatting changes to error and information messages.
+- If the Stationary zone was being exited and you were having poor gps or the location data was old, the iCloud3 would sometimes change the devices location to the center of the zone. In this case, it would change it to the North Pole, causing an error condition to occur and iCloud3 would be restarted. This has been fixed.
 - If the device was in a zone and was within the zone's radius on an ios app trigger, it was being moved back to the previous poll location when it should have been moved to the center of the zone.
-- If a zone Enter notification was recieved but the location was outside of the zone, the location was overridden to the zone's location rather than discarding the transaction and missing the zone Enter event.
+- If a zone Enter notification was received but the location was outside of the zone, the location was overridden to the zone's location rather than discarding the transaction and missing the zone Enter event.
+- Added an IOSAPP Monitor that reports details regarding state and trigger changes detected from the iOS App v2.
 '''
 import logging
 import os
@@ -1706,7 +1707,9 @@ class Icloud(DeviceScanner):
                                     age_secs)
 
                 if self.device_being_updated_flag.get(devicename):
-                    self._save_event(devicename, "Retrying last update")
+                    event_msg = ("Retrying last update with {}").format(
+                        self.trk_method_short_name)
+                    self._save_event(devicename, event_msg)
                     self._retry_update(devicename)
 
                 if update_via_iosapp_flag or update_via_icloud_flag:
@@ -1737,11 +1740,10 @@ class Icloud(DeviceScanner):
             self.device_being_updated_retry_cnt.get(devicename) < 4):
             self.device_being_updated_retry_cnt[devicename] += 1
 
-            log_msg = ((
-                "{} Retrying Update, Update was not "
+            log_msg = ("{} Retrying Update, Update was not "
                 "completed in last cycle, Retry #{}").format(
                     self._format_fname_devtype(devicename),
-                self.device_being_updated_retry_cnt.get(devicename)))
+                self.device_being_updated_retry_cnt.get(devicename))
             self.log_info_msg(log_msg)
 
             self.device_being_updated_flag[devicename] = True
@@ -1817,6 +1819,7 @@ class Icloud(DeviceScanner):
             self.location_isold_cnt[devicename]    = 0
             self.location_isold_msg[devicename]    = False
             self.poor_gps_accuracy_cnt[devicename] = 0
+            attrs = {}
 
             #--------------------------------------------------------
             try:
@@ -1840,7 +1843,8 @@ class Icloud(DeviceScanner):
                     #If the state changed, only process the zone that changed
                     #to avoid delays caused calculating travel time by other zones
                     if (self.state_change_flag.get(devicename) and
-                        self.state_this_poll.get(devicename) != zone):
+                        self.state_this_poll.get(devicename) != zone and
+                        zone != HOME):
                         continue
                         
                     self.base_zone = zone
@@ -1869,6 +1873,19 @@ class Icloud(DeviceScanner):
                 return
 
             try:
+                #attrs should not be empty, but catch it and do an icloud update
+                #if it does and no data is available. Exit without resetting
+                # device _being _update _flag so an icloud update will be done.
+                if attrs == {}:
+                    self.any_device_being_updated_flag = False
+                    self.iosapp_location_update_secs[devicename] = 0
+                    
+                    event_msg = ("IOS update was not completed, "
+                        "will retry with {}").format(self.trk_method_short_name)
+                    self._save_event_halog_info(devicename, event_msg)
+                    
+                    return
+                
                 #Note: Final prep and update device attributes via
                 #device_tracker.see. The gps location, battery, and
                 #gps accuracy are not part of the attrs variable and are
@@ -1930,8 +1947,6 @@ class Icloud(DeviceScanner):
                 event_msg = ("IOS App v{} update complete").format(
                     self.iosapp_version.get(devicename))
                 self._save_event(devicename, event_msg)
-
-
 
                 self._log_start_finish_update_banner('▲▲▲', devicename,
                             iosapp_version_text, update_reason)
