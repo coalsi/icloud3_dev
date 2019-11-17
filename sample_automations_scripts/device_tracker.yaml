@@ -10,7 +10,9 @@ device_tracker:
     username: gary-fmf-acct@email.com
     password: gary-fmf-password
     track_devices:
-      - gary_iphone > gary-icloud-acct@email.com, gary.png
+      - gary_iphone > gary-icloud-acct@email.com, gary.jpg
+      - lillian_iphone > lillian-icloud-acct@email.com, lillian.jpg
+
 
 #----- Second instance of iCloud3 ----- 
 #  - platform: icloud3
@@ -18,7 +20,8 @@ device_tracker:
 #    password: sydney-fmf-password
 #    track_devices:
 #      - sydney > sydney-icloud-acct@email.com, sydney.png
-      
+  
+  
 #----- Other Configuration Variables -----
 #    group: family
 
@@ -41,5 +44,5 @@ device_tracker:
 #    create_sensors: intvl,ttim,zdis,wdis,cdis,lupdt,nupdt,zon,zon1,zon2
 #    exclude_sensors: cnt,lupdt,zon3,lzon3,alt
 
-#   log_level: debug
+#    log_level: debug
   

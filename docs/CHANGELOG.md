@@ -1,4 +1,4 @@
-## Version 2.0 - 11/13/2019
+## Version 2.0 - 11/17/2019
 
 ### Breaking Changes
 
@@ -29,7 +29,7 @@
 - log_level - Display debug information on the Home Assistant Log File
 
 ##### Renamed iCloud Service Calls
-The following device_tracker service calls were renamed for clarity and to avoid confusion with the interhan HA icloud device_tracker platform. Basically, 'icloud_XXX' was changed to 'icloud3_XXX'.
+The following device_tracker service calls were renamed for clarity and to avoid confusion with the official HA iCloud device_tracker platform. Basically, 'icloud_XXX' was changed to 'icloud**3**_XXX'.
 
 | New Name | Old Name |
 |----------|----------|
@@ -111,7 +111,8 @@ Example:
 
 #### Other Changes
 
-- Changed the way a date is displayed to be able to run on a Windows based linux platform.
+- Updated the way the polling interval is calculated for different zone related situations.
+- Changed the way a date is displayed to be able to run on a Windows based Linux platform.
 - Code cleanup and optimization.
 
 ------

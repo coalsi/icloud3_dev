@@ -27,28 +27,26 @@ The following describe the commands that are available.
 | pause |  Stop updating/locating a device (or all devices). Note: You may want to pause location updates for a device if you are a long way from home or out of the country and it doesn't make sense to continue locating your device. |
 | resume |  Start updating/locating a device (or all devices) after it has been paused. |
 | resume |  Reset the update interval if it was overridden the 'icloud3_set_interval' service. |
-| pause-resume |  Toggle pause and resume commands |
 | zone zonename | service call) and immediately update the device interval and location data. Note: Using the device_tracker.see service call instead will update the device state but the new interval and location data will be delayed until the next 15-second polling iteration (rather than immediately). |
-| waze on |  Turn on Waze. Use the 'waze' method to determine the update interval. |
-| waze off |  Turn off Waze. Use the 'calc' method to determine the update interval. |
+| waze on | Turn on Waze. Use the `waze` method to determine the update interval. |
+| waze off | Turn off Waze. Use the `calc` method to determine the update interval. |
 | waze toggle |  Toggle waze on or off |
 | waze reset_range | Reset the Waze range to the default distances (min=1, max=99999). |
-| info interval | Show how the interval is determined by iCloud3. This is displayed real time in the `info` attribute field. |
-| info logging |  Toggle writing detailed debug information records to the HA log file. |
+| log_level | Display iCloud3 debug information in the HA Log file and, optionally, on the iCloud3 Event Log Card. <br>The following parameters are available:<br>- `debug` =  Entries related to device_tracker location operations <br>- `intervalcalc` =The methods and calculations related to the interval, next update time, zone, etc.<br>- `eventlo`g = Display the logged information on the iCloud3 Event Log Card.<br>- `info` = Display the current log_level options on the iCloud3 Event Log Card and the Info status line for the devices being tracked. |
 | restart |  Restart iCloud3. Detect any new devices, recheck the availability of the iCloud Location Service, relocate all devices, etc. |
 
 #### Example Automations or Scripts
 
 ```yaml
-# Commands to control how iCloud3 operates
+# Commands that control how iCloud3 operates
 
-icloud3_command_pause_resume_polling:
-  alias: 'Toggle Pause/Resume Polling'
+icloud3_command_restart:
+  alias: 'Restart iCloud (Command)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: pause-resume
-
+        command: restart
+       
 icloud3_command_resume_polling:
   alias: 'Resume Polling'
   sequence:
@@ -71,22 +69,20 @@ icloud3_command_pause_polling_gary:
         device_name: gary_iphone
         command: pause
 
-icloud3_command_toggle_waze:
-  alias: 'Toggle Waze On/Off'
+icloud3_update_location:
+  alias: 'Update Location (all)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: waze toggle
+        command: location
 
 icloud3_command_garyiphone_zone_home:
   alias: 'Gary - Zone Home'
   sequence:
-
     - service: device_tracker.icloud3_update
       data:
         device_name: gary_iphone
-        command: zone home
-      
+        command: zone home      
 
 icloud3_command_garyiphone_zone_not_home:
   alias: 'Gary - Zone not_home'
@@ -98,32 +94,67 @@ icloud3_command_garyiphone_zone_not_home:
 ```
 
 ```yaml
-#Commands to Restart iCloud3
+#Commands to that change the Waze Tracking Service
 
-icloud3_command_restart:
-  alias: 'iCloud3 Restart'
+icloud3_command_toggle_waze:
+  alias: 'Toggle Waze On/Off'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: restart
+        command: waze toggle
+        
+icloud3_command_reset_waze_range:
+  alias: 'Reset Waze Range'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: waze reset_range
 ```
 
 ```yaml
-#Commands to Generate Detailed Information on iCloud3's Operations
+#Commands that change the log_level options that write debug information to the HA Log File and the iCloud3 Event Log
 
-icloud3_command_info_interval_formula:
-  alias: 'Display Interval Formula'
+icloud3_command_loglevel_debug:
+  alias: 'LogLevel-Debug Info to HA Log (Toggle)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: info interval
-
-icloud3_command_info_logging_toggle:
-  alias: 'Write Details to Log File (Toggle)'
+        command: log_level debug
+        
+icloud3_command_loglevel_intervalcalc:
+  alias: 'LogLevel-Interval Calc (Toggle)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: info logging
+        command: log_level _intervalcalc
+        
+icloud3_command_loglevel_eventlog:
+  alias: 'LogLevel-Event Log (Toggle)'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level eventlog
+
+icloud3_command_loglevel_debug_eventlog:
+  alias: 'LogLevel-Debug Info to HA Log & EventLog(Toggle)'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level debug, eventlog
+ 
+icloud3_command_loglevel_intervalcalc_eventlog:
+  alias: 'LogLevel-Interval Calc & EventLog (Toggle)'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level intervalcalc, eventlog
+
+icloud3_command_loglevel_info:
+  alias: 'LogLevel-Display Flags'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level info
 ```
 
 ### icloud3_set_interval Service

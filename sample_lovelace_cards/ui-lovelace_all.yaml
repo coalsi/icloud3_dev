@@ -152,19 +152,14 @@ views:
           - script.icloud3_command_resume_polling
           - script.icloud3_command_pause_polling
           - script.icloud3_command_restart
-          - script.icloud3_restart_service
           - type: divider
-          - script.icloud3_set_interval_30_sec
           - script.icloud3_set_interval_1_min
           - script.icloud3_set_interval_5_min
           - script.icloud3_set_interval_15_min
           - script.icloud3_set_interval_30_min
-          - script.icloud3_set_interval_45_min
           - script.icloud3_set_interval_1_hrs
-          - script.icloud3_set_interval_90_mins
           - script.icloud3_set_interval_5_hrs
           - type: divider
-          - script.icloud3_command_toggle_icloud3_disabled
           - script.icloud3_command_toggle_waze
           - script.icloud3_command_reset_waze_range
           - script.icloud3_lost_iphone_invalid
@@ -180,6 +175,7 @@ views:
           - script.icloud3_set_interval_10_min_gary
           - script.icloud3_set_interval_1_min_lillian
           - script.icloud3_set_interval_10_min_lillian
+          - script.icloud3_command_gary_iphone_zone_home
           - script.icloud3_update_location_gary
           - script.icloud3_lost_iphone_gary
           
@@ -191,4 +187,15 @@ views:
           - script.icloud3_lost_iwatch_lillian
           - script.icloud3_gary_iphone_see_away
           - script.icloud3_update_location_lillian
+          
+      - type: entities
+        entities:
+        - script.icloud3_command_loglevel_debug
+        - script.icloud3_command_loglevel_intervalcalc
+        - script.icloud3_command_loglevel_eventlog
+        - script.icloud3_command_loglevel_info
+        - script.icloud3_command_loglevel_debug_eventlog
+        - script.icloud3_command_loglevel_intervalcalc_eventlog
+        
+
          

@@ -2,10 +2,10 @@
   <table style="padding: 10px 0px 10px 20px;">
     <tr>
       <td>
-        <a href="https://github.com/gcobb321/icloud3_dev" class="button-base">Github</a>
+        <a href="https://github.com/gcobb321/icloud3" class="button-base">Github</a>
       </td>
       <td>
-        <a href="https://github.com/gcobb321/icloud3_dev/releases" class="button-base">Download</a>
+        <a href="https://github.com/gcobb321/icloud3/releases" class="button-base">Download</a>
       </td>
     </tr>
   </table>

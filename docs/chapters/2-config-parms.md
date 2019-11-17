@@ -134,7 +134,7 @@ The interval between location updates when the device is in a Dynamic Stationary
 *Default:* 30 min
 
 ###### stationary_still_time 
-The number minutes of with little movement minutes before the device will be put into its Dynamic Stationary Zone.   
+The number minutes with little movement (1.5 times the Home zone radius) before the device will be put into its Dynamic Stationary Zone.   
 *Valid values:* Number. *Default:* 8
 
 ###### unit_of_measurement 
@@ -159,7 +159,20 @@ Specify only the sensors that should be created. See Customizing sensors in the 
 ###### exclude_sensors 
 Create all sensors except the ones specified. See Customizing sensors in the Sensor chapter for more information.
 
-!> If you are customizing the sensors that are created, you should use either the create_sensors parameter or the exclude_sensors parameter but not both.
+!> If you are customizing the sensors that are created, you should use either the create_sensors parameter or the exclude_sensors parameter but not both.  
+
+###### log_level
+
+Display iCloud3 debug information in the HA Log file and, optionally, on the iCloud3 Event Log Card.  The following parameters are available:  
+
+* `debug` -  Entries related to device_tracker location operations  
+* `intervalcalc` -The methods and calculations related to the interval, next update time, zone, etc.
+* `eventlog` - Display the logged information on the iCloud3 Event Log Card.  
+*  `info` - Display the current log_level options on the iCloud3 Event Log Card and the Info status line for the devices being tracked.  
+
+*Valid values:* debug, intervalcalc, eventlog, info
+
+*Note:* More than one parameter can be specified on the parameter line. For example `log_level: debug, eventlog`.
 
 ### Waze Configuration Items
 ###### distance_method 
@@ -219,5 +232,5 @@ device_tracker:
     create_sensors: intvl,ttim,zdis,wdis,cdis,lupdt,nupdt,zon,zon1,zon2
     exclude_sensors: cnt,lupdt,zon3,lzon3,alt
     
-    log_level: debug
+    log_level: debug, eventlog
 ```

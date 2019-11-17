@@ -9,8 +9,9 @@ A Dynamic Stationary Zone is a zone that iCloud3 creates when the device has not
 You do not have to create the Stationary Zone in the `zones.yaml` file, the iCloud3 device tracker automatically creates one for every device being tracked when Home Assistant is started. The initial location is latitude 90°, longitude 180° (the North Pole). It's name is `devicename_stationary`.  
 
 Details about the Stationary Zone:
-- You must be at least 2.5 times the Home zone radius.
-- It's radius is 2 times the Home zone radius.
+- You must be at least 2.5 times the Home zone radius before you can be put into a stationary zone.
+- The Stationary Zone radius is 2 times the Home zone radius.
+- If your distance from a zone (Home) is less than 4 times the zone's radius and you haven't moved for one-half of the `stationary_still_time` (4-minutes if using the default value), you will be put into the Stationary Zone. Normally, the polling interval will be 15-seconds at this distance. This reduces the number of polls if you are close to but not in a zone and are not moving.
 - The maximum distance you can move in a specific amount of time is 1.5 times the Home zone radius.
 - The amount of time you must be still is specified in the `stationary_still_time` configuration parameter (default is 8 minutes).
 

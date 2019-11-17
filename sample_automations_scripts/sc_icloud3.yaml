@@ -15,25 +15,6 @@ icloud3_command_restart:
       data:
         command: restart
        
-icloud3_command_toggle_icloud3_disabled:
-  alias: 'Toggle iCloud Disabled'
-  sequence:
-    - service: device_tracker.icloud3_update
-      data:
-        command: toggle_icloud3_disabled
-       
-icloud3_restart_service:
-  alias: 'Restart iCloud (Service)'
-  sequence:
-    - service: device_tracker.icloud3_restart
-
-icloud3_command_pause_resume_polling:
-  alias: 'Toggle Pause/Resume Polling'
-  sequence:
-    - service: device_tracker.icloud3_update
-      data:
-        command: pause-resume
-
 icloud3_command_resume_polling:
   alias: 'Resume Polling'
   sequence:
@@ -62,75 +43,56 @@ icloud3_command_reset_waze_range:
       data:
         command: waze reset_range
         
-icloud3_set_interval_30_sec:
-  alias: 'Set interval to 30 sec'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '30 sec'
-        
-icloud3_set_interval_1_min:
-  alias: 'Set interval to 1 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: 1
-        
-icloud3_set_interval_5_min:
-  alias: 'Set interval to 5 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: 5
-               
-icloud3_set_interval_15_min:
-  alias: 'Set interval to 15 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '15 min'
-
-icloud3_set_interval_30_min:
-  alias: 'Set interval to 30 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '30 min'
-
-icloud3_set_interval_45_min:
-  alias: 'Set interval to 45 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '45 min'
-        
-icloud3_set_interval_1_hrs:
-  alias: 'Set interval to 1 hrs'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '1 hr'
-        
-icloud3_set_interval_90_mins:
-  alias: 'Set interval to 90 min'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '90 min'
-        
-icloud3_set_interval_5_hrs:
-  alias: 'Set interval to 5 hrs'
-  sequence:
-    - service: device_tracker.icloud3_set_interval
-      data:
-        interval: '5 hr'
-  
 icloud3_update_location:
   alias: 'Update Location (all)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
         command: location
+#------------------------------------------------------------          
+icloud3_set_interval_1_min:
+  alias: 'Interval - 1 min'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: 1
+        
+icloud3_set_interval_5_min:
+  alias: 'Interval - 5 min'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: 5
+               
+icloud3_set_interval_15_min:
+  alias: 'Interval - 15 min'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: '15 min'
+
+icloud3_set_interval_30_min:
+  alias: 'Interval - 30 min'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: '30 min'
+ 
+icloud3_set_interval_1_hrs:
+  alias: 'Interval -  1 hrs'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: '1 hr'
+                
+icloud3_set_interval_5_hrs:
+  alias: 'Interval -   5 hrs'
+  sequence:
+    - service: device_tracker.icloud3_set_interval
+      data:
+        interval: '5 hr'
+  
+
 #--------------------------------------------------------------
 #   Set iCloud commands for Gary
 #--------------------------------------------------------------
@@ -151,7 +113,7 @@ icloud3_command_pause_polling_gary:
         command:     pause
               
 icloud3_set_interval_10_min_gary:
-  alias: 'Set interval to 10 min (Gary)'
+  alias: 'Interval - 10 min (Gary)'
   sequence:
     - service: device_tracker.icloud3_set_interval
       data:
@@ -159,7 +121,7 @@ icloud3_set_interval_10_min_gary:
         interval:   '10 min'
 
 icloud3_set_interval_2_min_gary:
-  alias: 'Set interval to 1 min (Gary)'
+  alias: 'Interval -  1 min (Gary)'
   sequence:
     - service: device_tracker.icloud3_set_interval
       data:
@@ -205,7 +167,7 @@ icloud3_command_pause_polling_lillian:
         command:     pause
  
 icloud3_set_interval_10_min_lillian:
-  alias: 'Set interval to 10 min (Lillian)'
+  alias: 'Interval - 10 min (Lillian)'
   sequence:
     - service: device_tracker.icloud3_set_interval
       data:
@@ -213,7 +175,7 @@ icloud3_set_interval_10_min_lillian:
         interval:    '10 min'
 
 icloud3_set_interval_1_min_lillian:
-  alias: 'Set interval to 1 min (Lillian)'
+  alias: 'Interval - 1 min (Lillian)'
   sequence:
     - service: device_tracker.icloud3_set_interval
       data:
@@ -305,34 +267,46 @@ icloud3_gary_iphone_see_away:
 #--------------------------------------------------------------
 #   INFORMATION COMMANDS
 #--------------------------------------------------------------
-icloud3_command_info_interval_formula:
-  alias: 'Display Interval Formula'
+icloud3_command_loglevel_debug:
+  alias: 'LogLevel-Debug Info to HA Log (Toggle)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: info interval
+        command: log_level debug
+        
+icloud3_command_loglevel_intervalcalc:
+  alias: 'LogLevel-Interval Calc (Toggle)'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level _intervalcalc
+        
+icloud3_command_loglevel_eventlog:
+  alias: 'LogLevel-Event Log (Toggle)'
+  sequence:
+    - service: device_tracker.icloud3_update
+      data:
+        command: log_level eventlog
 
-icloud3_command_info_logging_toggle:
-  alias: 'Write Details to Log File (Toggle)'
+icloud3_command_loglevel_debug_eventlog:
+  alias: 'LogLevel-Debug Info to HA Log & EventLog(Toggle)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: info logging
-#--------------------------------------------------------------
-#   DEBUG COMMANDS
-#--------------------------------------------------------------   
-icloud3_command_debug_test_gps:
-  alias: 'Test GPS Accuracy'
+        command: log_level debug, eventlog
+ 
+icloud3_command_loglevel_intervalcalc_eventlog:
+  alias: 'LogLevel-Interval Calc & EventLog (Toggle)'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command: debug gps
-              
-icloud3_command_debug_test_old:
-  alias: 'Test Old Location'
+        command: log_level intervalcalc, eventlog
+
+icloud3_command_loglevel_info:
+  alias: 'LogLevel-Display Flags'
   sequence:
     - service: device_tracker.icloud3_update
       data:
-        command:      debug old
+        command: log_level info
 
 
