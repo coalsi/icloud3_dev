@@ -22,7 +22,7 @@ Thanks to all
 #pylint: disable=unused-argument, unused-variable
 #pylint: disable=too-many-instance-attributes, too-many-lines
 
-VERSION = '2.0.2'     #Custom Component Updater
+VERSION = '2.0.2zc2'     #Custom Component Updater
 '''
 v2.0.2
 - Fixed problem calculating distance and intervals for a second zone.
@@ -1693,7 +1693,7 @@ class Icloud(DeviceScanner):
                             update_via_iosapp_flag = False
                             ios_update_reason      = None
                             location_age =self._secs_since(dev_timestamp_secs)
-                            
+
                             event_msg = ("__Discarding > Old location, GPS-(}, {}), "
                                 "GPSAccuracy-{}, Located-{} ({} ago)").format(
                                 dev_latitude,
@@ -4272,8 +4272,8 @@ class Icloud(DeviceScanner):
 
         state        = self.state_this_poll.get(devicename)
         current_zone = self.zone_current.get(devicename)
-        
-        '''
+
+
         #######################################################################
         #The current zone is based on location of the device after it is looked
         #up in the zone tables.
@@ -4281,15 +4281,15 @@ class Icloud(DeviceScanner):
         #If the device went from one zone to another zone, an enter/exit trigger
         #may not have been issued. If the trigger was the next update time
         #reached, the state and zone many now not match. (v2.0.2)
-        
+
         if state == NOT_SET:
             pass
-            
+
         #If state is 'stationary' and in a stationary zone, nothing to do
-        elif state == STATIONARY and instr(current_zone, STATIONARY):               
+        elif state == STATIONARY and instr(current_zone, STATIONARY):
             pass
 
-        #If state is 'stationary' and in another zone, reset the state to the 
+        #If state is 'stationary' and in another zone, reset the state to the
         #current zone that was based on the device location.
         #If the state is in a zone but not the current zone, change the state
         #to the current zone that was based on the device location.
@@ -4302,8 +4302,8 @@ class Icloud(DeviceScanner):
             self._save_event(devicename, event_msg)
             state = current_zone
         #######################################################################
-        '''
-        
+
+
 
         #Get friendly name or capitalize and reformat state
         if self._is_inzoneZ(state):
@@ -4445,7 +4445,7 @@ class Icloud(DeviceScanner):
         if zone_name:
             zone_lat  = self.zone_latitude.get(zone_name)
             zone_long = self.zone_longitude.get(zone_name)
-              
+
             if zone_lat and (latitude != zone_lat or longitude != zone_long):
                 if self._update_last_latitude_longitude(devicename, zone_lat, zone_long, 4450):
                     event_msg  = ("__Moving back to zone `{}` center, "
@@ -4777,6 +4777,7 @@ class Icloud(DeviceScanner):
                 latitude,
                 longitude,
                 line_no)
+
         else:
             self.last_lat[devicename]  = latitude
             self.last_long[devicename] = longitude
