@@ -64,7 +64,7 @@ You set up the device’s primary user as a friend on the `Find My` app (iOS 13)
 
 If you do not have 2fa turned on on your 'real' iCloud account, you can use the Family Sharing tracking method to locate your device(s). iCloud3 looks for the devices to be tracked in the list of people that are in the Family Sharing list on your iCloud account. With Family Sharing, you use your 'real' iCloud account email address for the `username`  configuration parameter.
 
-The `tracking_method` and `tracked_devices` configuration parameters are used to indicate how tracking should be done and the devices to be tracked.
+The `tracking_method` and `track_devices` configuration parameters are used to indicate how tracking should be done and the devices to be tracked.
 
 !> Family Sharing was the only tracking method used on iCloud3 version 1.
 
@@ -99,13 +99,13 @@ To correct this conflict, you should change the Entity ID of the IOS App v2 devi
 5. Change *Entity ID* to another value bu changing the suffix assigned to the Entity ID. Suggestion *device_tracker.devicename_2* or *device_tracker.devicename_3* .
 6. Restart HA.
 
-!> If no mobile_app entry with a devicename starting with the one on the tracked_devices parameter is found, iCloud3 will monitor that device using the IOS App version 1.
+!> If no mobile_app entry with a devicename starting with the one on the track_devices parameter is found, iCloud3 will monitor that device using the IOS App version 1.
 
 !> iCloud3 also monitors the sensor.devicename_last_update_trigger entity associated with the device for Background Fetch, Significant Location Update and Manual location triggers.
 
 !> When you have several devices being tracked, one device can use version 1 and the other device can use version 2 of the IOS App.
 
-!> If you have both version 1 and version 2 on the same device, version 2 will be used. You can override this with an entry on the tracked_devices configuration parameter to use version 1.
+!> If you have both version 1 and version 2 on the same device, version 2 will be used. You can override this with an entry on the track_devices configuration parameter to use version 1.
 
 ### What happens if the iCloud Location Service is not available or I don't want to use it
 When iCloud3 starts and if the `tracking_method` is 'fmf' of 'famshr', the iCloud account is accessed for device and location information. If the iCloud account can not be accessed (the Apple iCloud service is down, an error authorization error is returned from the iCloud service, the account can not be found, the account name and password are not correct, etc.), iCloud3 will issue an error message and revert to using the IOS App (`tracking_method: iopsapp`). The following occurs:
